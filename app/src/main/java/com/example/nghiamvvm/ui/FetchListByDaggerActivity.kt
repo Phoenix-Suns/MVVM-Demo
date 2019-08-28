@@ -2,6 +2,7 @@ package com.example.nghiamvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -30,6 +31,8 @@ class FetchListByDaggerActivity : AppCompatActivity() {
     internal lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var moviesListViewModel: MovieListViewModel
 
+    @Inject
+    lateinit var age123: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)   // init Dragger
@@ -39,6 +42,8 @@ class FetchListByDaggerActivity : AppCompatActivity() {
         setupKeywordRecyclerView()
         //fetchKeyword()
         initViewModel()
+
+        Log.e("age123", age123)
     }
 
     private fun setupKeywordRecyclerView() {

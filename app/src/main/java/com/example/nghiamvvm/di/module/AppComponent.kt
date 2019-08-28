@@ -5,6 +5,7 @@ import com.example.nghiamvvm.MyApplication
 import com.example.nghiamvvm.di.component.ActivityModule
 import com.example.nghiamvvm.di.component.ApiModule
 import com.example.nghiamvvm.di.component.DbModule
+import com.example.nghiamvvm.di.component.TestModule
 import com.example.testdagger.di.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
@@ -17,7 +18,9 @@ import javax.inject.Singleton
         DbModule::class,
         ViewModelModule::class,
         ActivityModule::class,
-        AndroidSupportInjectionModule::class]
+        AndroidSupportInjectionModule::class,
+        TestModule::class
+    ]
 )
 @Singleton
 interface AppComponent {

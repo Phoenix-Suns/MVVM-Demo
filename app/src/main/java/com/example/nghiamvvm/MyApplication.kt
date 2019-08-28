@@ -2,7 +2,7 @@ package com.example.nghiamvvm
 
 import android.app.Activity
 import android.app.Application
-import com.example.testdagger.di.DaggerAppComponent
+import com.example.nghiamvvm.di.module.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
