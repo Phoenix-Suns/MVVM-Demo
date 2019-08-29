@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.*
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nghiamvvm.R
@@ -58,8 +59,7 @@ class FetchListByMVVMActivity : AppCompatActivity() {
         adapter = MoviesAdapter(this)
         recyclerView.adapter = adapter
 
-        //val layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        val layoutManager = GridLayoutManager(this, 2)
         recyclerView.layoutManager = layoutManager
     }
 

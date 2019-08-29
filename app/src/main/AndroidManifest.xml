@@ -16,10 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.FetchListByMVVMActivity"></activity>
-        <activity android:name=".ui.FetchListByDaggerActivity" />
-        <activity android:name=".ui.FetchListByKoinActivity" />
-        <activity android:name=".ui.FetchListBasicActivity" />
+        <activity android:name=".ui.FetchListByMVVMActivity"
+            android:label="MVVM"/>
+        <activity android:name=".ui.FetchListByDaggerActivity"
+            android:label="MVVM + Dagger Basic"/>
+        <activity android:name=".ui.FetchListByKoinActivity"
+            android:label="MVVM + Koin Basic"/>
+        <activity android:name=".ui.FetchListBasicActivity"
+            android:label="Retrofit Basic"/>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
