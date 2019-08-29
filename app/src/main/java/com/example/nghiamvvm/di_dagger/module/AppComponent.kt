@@ -1,11 +1,11 @@
-package com.example.nghiamvvm.di.module
+package com.example.nghiamvvm.di_dagger.module
 
 import android.app.Application
 import com.example.nghiamvvm.MyApplication
-import com.example.nghiamvvm.di.component.ActivityModule
-import com.example.nghiamvvm.di.component.ApiModule
-import com.example.nghiamvvm.di.component.DbModule
-import com.example.nghiamvvm.di.component.TestModule
+import com.example.nghiamvvm.di_dagger.component.ActivityModule
+import com.example.nghiamvvm.di_dagger.component.ApiModule
+import com.example.nghiamvvm.di_dagger.component.DbModule
+import com.example.nghiamvvm.di_dagger.component.TestModule
 import com.example.testdagger.di.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component

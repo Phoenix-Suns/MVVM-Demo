@@ -25,4 +25,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this@MainActivity, FetchListByMVVMActivity::class.java))
 
     }
+
+    fun fetchByKoin(view: View) {
+        startActivity(Intent(this@MainActivity, FetchListByKoinActivity::class.java))
+    }
 }

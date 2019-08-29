@@ -18,32 +18,26 @@ import com.example.nghiamvvm.models.Resource
 import com.example.nghiamvvm.network.MovieApiService
 import com.example.nghiamvvm.network.MovieRepository
 import com.example.nghiamvvm.ui.adapter.MoviesAdapter
-import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.activity_fetch_by_dagger.*
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
+import kotlinx.android.synthetic.main.activity_fetch_by_koin.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FetchListByDaggerActivity : AppCompatActivity() {
+class FetchListByKoinActivity : AppCompatActivity() {
     private var TAG = this::class.java.name
 
     private lateinit var adapter: MoviesAdapter
 
-    @Inject
-    internal lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var viewModel: Movie1ViewModel
-
-    @Inject
-    lateinit var age123: String
+    private val viewModel: MovieList2ViewModel by viewModel()
+    private val nghiaStr: String by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)   // init Dragger
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fetch_by_dagger)
+        setContentView(R.layout.activity_fetch_by_koin)
+
+        Log.e("Nghia", nghiaStr)
 
         setupKeywordRecyclerView()
-        //fetchKeyword()
         initViewModel()
-
-        Log.e("age123", age123)
     }
 
     private fun setupKeywordRecyclerView() {
@@ -55,19 +49,7 @@ class FetchListByDaggerActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
     }
 
-    private fun fetchKeyword() {
-        /*val movieService = MovieService2.getInstance().create(MovieApiService::class.java).fetchMoviesByType()
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({response ->
-                updateRecyclerView(response.results)
-            }, { e ->
-                showError("${e.message}")
-            })*/
-    }
-
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(Movie1ViewModel::class.java)
         viewModel.getMoviesLiveData().observeForever { resource: Resource<List<MovieEntity>>? ->
             if (resource?.isLoading == true) {
                 displayLoading(true)
@@ -103,13 +85,16 @@ class FetchListByDaggerActivity : AppCompatActivity() {
  * We are injecting the MovieDao class
  * and the MovieApiService class to the ViewModel.
  **/
-class Movie1ViewModel @Inject constructor(
+class MovieList2ViewModel constructor(
     movieDao: MovieDao,
     movieApiService: MovieApiService
 ) : ViewModel() {
 
+    /* You can see we are initialising the MovieRepository class here */
     private val movieRepository: MovieRepository = MovieRepository(movieDao, movieApiService)
-    private val moviesListLiveData = MutableLiveData<Resource<List<MovieEntity>>>() // LiveData to UpdateUI
+
+    /* We are using LiveData to update the UI with the data changes.*/
+    private val moviesListLiveData = MutableLiveData<Resource<List<MovieEntity>>>()
 
     /* Method called by UI to fetch movies list */
     fun loadMoreMovies() {

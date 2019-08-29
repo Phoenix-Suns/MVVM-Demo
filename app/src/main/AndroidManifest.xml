@@ -18,6 +18,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.FetchListByMVVMActivity"></activity>
         <activity android:name=".ui.FetchListByDaggerActivity" />
+        <activity android:name=".ui.FetchListByKoinActivity" />
         <activity android:name=".ui.FetchListBasicActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>

@@ -25,5 +25,10 @@
         android:text="Fetch List Dagger"
         android:onClick="fetchByDagger"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fetch List KOIN"
+        android:onClick="fetchByKoin"/>
 
 </LinearLayout>

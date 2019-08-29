@@ -1,4 +1,4 @@
-package com.example.nghiamvvm.di.component
+package com.example.nghiamvvm.di_dagger.component
 
 import android.app.Application
 import androidx.room.Room

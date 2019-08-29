@@ -15,8 +15,8 @@ import com.example.nghiamvvm.models.Resource
 import com.example.nghiamvvm.network.MovieApiService
 import com.example.nghiamvvm.network.MovieRepository
 import com.example.nghiamvvm.ui.adapter.MoviesAdapter
-import com.example.nghiamvvm.di.component.ApiModule
-import com.example.nghiamvvm.di.component.DbModule
+import com.example.nghiamvvm.di_dagger.component.ApiModule
+import com.example.nghiamvvm.di_dagger.component.DbModule
 import kotlinx.android.synthetic.main.activity_fetch_list_mvvm.*
 
 class FetchListByMVVMActivity : AppCompatActivity() {
@@ -24,7 +24,7 @@ class FetchListByMVVMActivity : AppCompatActivity() {
 
     private lateinit var adapter: MoviesAdapter
     //private lateinit var viewModel: NameViewModel
-    private lateinit var viewModel: MovieList1ViewModel
+    private lateinit var viewModel: MovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class FetchListByMVVMActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProviders.of(this).get(MovieList1ViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
         viewModel.getMoviesLiveData().observeForever { resource: Resource<List<MovieEntity>>? ->
             if (resource?.isLoading == true) {
                 displayLoading(true)
@@ -88,7 +88,7 @@ class FetchListByMVVMActivity : AppCompatActivity() {
     }
 }
 
-class MovieList1ViewModel(application: Application) : AndroidViewModel(application) {
+class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
     private var movieDao: MovieDao
     private var movieApiService: MovieApiService
